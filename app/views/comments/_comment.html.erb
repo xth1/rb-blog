@@ -1,0 +1,12 @@
+<li class="list-group-item" id='comment_<%=comment.id%>'>
+  <div class='comment'>
+    <div>
+      <small> 
+        Created <b><%= time_ago_in_words(comment.created_at)%></b> ago
+      </small>
+    </div>
+    <div>
+      <%= h(comment.body) %>
+    </div>
+  </div>
+</li>
