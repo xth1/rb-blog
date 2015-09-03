@@ -6,26 +6,13 @@
     </div>
     <div class="panel-body">
       <div class='post-body'>
-        <%= @post.body %>
+        <%= simple_format(@post.body) %>
       </div>
-      <div class='well comments'>
+      <div class='well'>
        <!--<div class="container">-->
         <h4> Comments </h4>
-        <ul class="list-group">
-          <% @post.comments.each do |comment| %>
-              <li class="list-group-item">
-                <div class='comment'>
-                  <div>
-                    <small> 
-                      Created <b><%= time_ago_in_words(comment.created_at)%></b> ago
-                    </small>
-                  </div>
-                  <div>
-                    <%= h(comment.body) %>
-                  </div>
-                </div>
-              </li>
-          <% end %>
+        <ul class="list-group" id='comments'>
+          <%= render :partial => @post.comments.reverse %>
         </ul>
         <div class='add-comment'>
            <%= render 'comment_form' %>
@@ -34,11 +21,15 @@
     </div>
     <div class="panel-footer">
       <div class='row'>
-        <div class='col-md-6'>
-          <%= link_to 'Edit', edit_post_path(@post) %>
+        <div class='col-md-3'>
+          <%= link_to  posts_path do%>
+            <i class='icon ion-arrow-left-c'></i>
+          <% end %>
         </div>
-        <div class='col-md-6'>
-           <%= link_to 'Back', posts_path %>
+        <div class='col-md-3'>
+          <%= link_to  edit_post_path(@post) do%>
+            <i class='icon ion-edit'></i>
+          <% end %>
         </div>
       </div>
     </div>
