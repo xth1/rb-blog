@@ -23,12 +23,12 @@
       <div class='row'>
         <div class='col-md-3'>
           <%= link_to  posts_path do%>
-            <i class='icon ion-arrow-left-c'></i>
+            <i class='icon ion-arrow-left-c' data-toggle="tooltip" data-placement="top" title="Go back!" ></i>
           <% end %>
         </div>
         <div class='col-md-3'>
           <%= link_to  edit_post_path(@post) do%>
-            <i class='icon ion-edit'></i>
+            <i class='icon ion-edit' data-toggle="tooltip" data-placement="top" title="Edit post!"></i>
           <% end %>
         </div>
       </div>

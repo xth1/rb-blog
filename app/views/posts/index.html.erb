@@ -10,25 +10,27 @@
         <div class='row'>
           <div class='col-sm-8'>
             <div class='row summary'>
-              <div class='col-sm-4'> <%= post.title %></div>
-              <div class='col-sm-8'><%= post.body %></div>
+              <%= link_to post do%>
+                <div class='col-sm-4'> <%= post.title %></div>
+              <% end %>
+              <div class='col-sm-8 summary'><%= post.body %></div>
             </div>
           </div>
           <div class='col-sm-4'>
             <div class='row'>
               <div class='col-sm-4'>
                 <%= link_to post do%>
-                  <i class='icon ion-eye'></i>
+                  <i class='icon ion-eye' data-toggle="tooltip" data-placement="top" title="See the post!"></i>
                 <% end %>
               </div>
               <div class='col-sm-4'>
                 <%= link_to  edit_post_path(post) do%>
-                  <i class='icon ion-edit'></i>
+                  <i class='icon ion-edit' data-toggle="tooltip" data-placement="top" title="Edit the post!"></i>
                 <% end %>
               </div>
               <div class='col-sm-4'>
                 <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do%>
-                  <i class='icon ion-trash-a'></i>
+                  <i class='icon ion-trash-a' data-toggle="tooltip" data-placement="top" title="Remove the post!"></i>
                 <% end %>
               </div>
             </div>
@@ -38,7 +40,7 @@
     </div>
     <div class="panel-footer">
       <%= link_to new_post_path do %>
-        <i class='icon ion-plus'></i>
+        <i class='icon ion-plus' data-toggle="tooltip" data-placement="top" title="Create a new post!"></i>
       <% end %>
     </div>
   </div>
