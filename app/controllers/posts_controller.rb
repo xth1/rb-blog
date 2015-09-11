@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate, except: [:index, :show]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
+  before_action :authenticate, except: [:index, :show, :like]
   # GET /posts
   # GET /posts.json
   def index
@@ -58,6 +58,20 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def like
+    #increment the like_count
+    if (@post.like_count == nil)
+      @post.like_count = 1
+    else
+      @post.like_count += 1
+    end
+    respond_to do |format|
+      if @post.save()
+        format.js
+      end
     end
   end
 
